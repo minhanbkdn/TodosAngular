@@ -1,0 +1,77 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css");
+
+.todo-item {
+  display: grid;
+  grid-template-columns: 1fr 8fr 1fr;
+  align-content: center;
+  font-size: 24px;
+  padding: 15px;
+}
+
+.todo-item:hover .destroy:before {
+  display: block;
+}
+
+.toggle {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: inherit;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  margin: auto;
+  border: 1px solid #c6c6c6;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.toggle:focus, .destroy:focus {
+  outline: none;
+}
+
+.toggle:checked {
+  background-color: mediumaquamarine;
+  border: 1px solid mediumaquamarine;
+}
+
+.toggle:before {
+  content: '\f00c';
+  position: absolute;
+  color: #fff;
+  font-family: "FontAwesome", sans-serif;
+  font-size: 20px;
+}
+
+.destroy {
+  position: relative;
+  background: inherit;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.destroy:before {
+  content: '\f057';
+  position: absolute;
+  color: rgba(175, 47, 47, 0.75);
+  font-family: "FontAwesome", sans-serif;
+  font-size: 20px;
+  display: none;
+}
+
+.description {
+  margin: auto 0;
+  word-break: break-all;
+  padding: auto 0;
+  line-height: 1.2;
+}
+
+.complete .description {
+  text-decoration: line-through;
+  opacity: 0.3;
+}
+

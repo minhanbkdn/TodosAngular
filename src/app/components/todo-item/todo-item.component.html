@@ -1,0 +1,5 @@
+<div class="todo-item " *ngIf="todoItem" [ngClass]="{'complete': todoItem.IsComplete}">
+  <input class="toggle" type="checkbox" [(ngModel)]="todoItem.IsComplete" (change)="changeState(todoItem)">
+  <label type="text" class="description">{{todoItem.Description}}</label>
+  <button class="destroy" (click)="deleteTodo()"></button>
+</div>
