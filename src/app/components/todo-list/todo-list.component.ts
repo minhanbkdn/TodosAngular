@@ -28,7 +28,8 @@ export class TodoListComponent implements OnInit {
   }
 
   async updateTodo(todoItem) {
-    await this.todoService.updateToDoItem(todoItem).subscribe(
+    console.log(todoItem);
+    await this.todoService.updateToDo(todoItem).subscribe(
       item => todoItem = (<TodoItem>item),
       error => console.log(error)
     );

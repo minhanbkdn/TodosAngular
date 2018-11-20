@@ -15,8 +15,7 @@ export class TodoService {
   constructor(private httpClient: HttpClient) {
   }
 
-  updateToDoItem(item: TodoItem): Observable<any> {
-    console.log(item);
+  updateToDo(item: TodoItem): Observable<any> {
     return this.httpClient.put(this.url, item, this.httpOptions);
   }
 
@@ -27,6 +26,7 @@ export class TodoService {
 
   deleteTodo(todo: TodoItem | number): Observable<object> {
     const id = typeof todo === 'number' ? todo : todo.Id;
+    console.log(`${this.url}/${id}`);
     return this.httpClient.delete(`${this.url}/${id}`);
   }
 

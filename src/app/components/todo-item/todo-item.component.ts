@@ -11,12 +11,13 @@ export class TodoItemComponent implements OnInit {
   @Input() todoItem: TodoItem;
   @Output() itemRemove = new EventEmitter();
   @Output() itemUpdate = new EventEmitter();
+  editting = false;
 
   constructor() {
   }
 
   deleteTodo(): void {
-    this.itemRemove.next(this.todoItem.Id);
+    this.itemRemove.emit(this.todoItem.Id);
   }
 
   changeState() {
@@ -24,7 +25,20 @@ export class TodoItemComponent implements OnInit {
   }
 
   updateTodo() {
-    this.itemUpdate.next(this.todoItem);
+    this.itemUpdate.emit(this.todoItem);
+  }
+
+  edit() {
+    this.editting = true;
+  }
+
+  stopEditting() {
+    this.editting = false;
+    this.itemUpdate.emit(this.todoItem);
+  }
+
+  cancelEditting() {
+    this.editting = false;
   }
 
   ngOnInit() {

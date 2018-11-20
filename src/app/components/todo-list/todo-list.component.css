@@ -40,6 +40,7 @@ input.new-todo:focus {
 ul.list-todo {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 ul.list-todo li{
   border-bottom: 1px solid #ededed;
