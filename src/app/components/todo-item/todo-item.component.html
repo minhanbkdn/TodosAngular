@@ -1,0 +1,9 @@
+<div class="todo-item " *ngIf="todoItem && !editting" >
+  <input class="toggle" type="checkbox" [(ngModel)]="todoItem.IsComplete" (change)="changeState()">
+  <label type="text" class="description" (dblclick)="edit()" [ngClass]="{'complete': todoItem.IsComplete}">{{todoItem.Description}}</label>
+  <button class="destroy" (click)="deleteTodo()"></button>
+</div>
+<div class="edit" *ngIf="editting">
+  <input class="editting" type="text" value="{{todoItem.Description}}" [(ngModel)]="todoItem.Description"
+         (blur)="stopEditting()" (keyup.enter)="stopEditting()" (keyup.escape)="cancelEditting()" autofocus=autofocus>
+</div>

@@ -1,0 +1,15 @@
+<div class="footer">
+  <span class="todo-count"><strong>{{ remainingItem }}</strong> {{ remainingItem == 1 ? 'item' : 'items' }} left</span>
+  <ul class="filters">
+    <li>
+      <a (click)="filters(0)" [class.selected]="currentStatus == 0">All</a>
+    </li>
+    <li>
+      <a (click)="filters(1)" [class.selected]="currentStatus == 1">Active</a>
+    </li>
+    <li>
+      <a (click)="filters(2)" [class.selected]="currentStatus == 2">Completed</a>
+    </li>
+  </ul>
+  <button class="clear-completed" *ngIf="completedItem" (click)="clearCompleted()">Clear completed</button>
+</div>
