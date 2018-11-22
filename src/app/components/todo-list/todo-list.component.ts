@@ -28,14 +28,52 @@ export class TodoListComponent implements OnInit {
   }
 
   async updateTodo(todoItem) {
-    console.log(todoItem);
     await this.todoService.updateToDo(todoItem).subscribe(
       item => todoItem = (<TodoItem>item),
       error => console.log(error)
     );
   }
 
+  getRemainingTodo(): number {
+    return this.todoList.filter(value => !value.IsComplete).length;
+  }
+
+  getCompletedTodo(): number {
+    return this.todoList.filter(value => value.IsComplete).length;
+  }
+
+  filters(status: number) {
+    switch (status) {
+      case 0: {
+        this.todoService.getTodos().subscribe(
+          todos => this.todoList = todos,
+          error => console.log(error)
+        );
+        break;
+      }
+      case 1: {
+        this.todoService.getTodos().subscribe(
+          todos => this.todoList = todos.filter(value => !value.IsComplete),
+          error => console.log(error)
+        );
+        break;
+      }
+      case 2: {
+        this.todoService.getTodos().subscribe(
+          todos => this.todoList = todos.filter(value => value.IsComplete),
+          error => console.log(error)
+        );
+        break;
+      }
+    }
+  }
+
+  removeComplete() {
+    //
+  }
+
   ngOnInit() {
+    this.todoList = [];
     this.newTodo = new TodoItem('');
     this.todoService.getTodos().subscribe(
       todos => this.todoList = todos,

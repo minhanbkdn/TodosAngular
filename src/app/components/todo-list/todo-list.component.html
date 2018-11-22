@@ -1,9 +1,17 @@
 <div class="todo-app">
-  <input autofocus="" class="new-todo" placeholder="What needs to be done?" [(ngModel)]="newTodo.Description" (keyup.enter)="addTodo()">
+  <input autofocus="" class="new-todo" placeholder="What needs to be done?" [(ngModel)]="newTodo.Description"
+         (keyup.enter)="addTodo()">
   <ul class="list-todo">
     <li *ngFor="let todo of todoList">
-      <app-todo-item [todoItem]="todo" (itemRemove)="deleteTodo($event)" (itemUpdate)="updateTodo($event)"></app-todo-item>
+      <app-todo-item [todoItem]="todo" (itemRemove)="deleteTodo($event)"
+                     (itemUpdate)="updateTodo($event)">
+      </app-todo-item>
     </li>
   </ul>
-  <app-todo-footer></app-todo-footer>
+  <app-todo-footer *ngIf="todoList.length"
+                   [remainingItem]="getRemainingTodo()"
+                   [completedItem]="getCompletedTodo()"
+                   (filterTodoItem)="filters($event)"
+                   (removeCompleted)="removeComplete($event)">
+  </app-todo-footer>
 </div>
